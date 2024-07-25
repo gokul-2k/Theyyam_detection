@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <link rel="icon" href="{% static 'myapp/assets/images/favicon.png' %}" type="image/gif" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Theyyam Digitalization</title>
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'myapp/assets/css/bootstrap.css' %}" />
+  <!-- font awesome style -->
+  <link href="{% static 'myapp/assets/css/font-awesome.min.css' %}"  rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="{% static 'myapp/assets/css/style.css' %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static 'myapp/assets/css/responsive.css' %}" rel="stylesheet" />
+
+</head>
+
+<body>
+
+  <!-- header section strats -->
+  <header class="header_section">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg custom_nav-container">
+        <a class="navbar-brand" href="index.html">
+          <span>
+            DIGITheyyam
+          </span>
+        </a>
+        <div class="" id="">
+
+          <div class="custom_menu-btn">
+            <button onclick="openNav()">
+              <span class="s-1"> </span>
+              <span class="s-2"> </span>
+              <span class="s-3"> </span>
+            </button>
+            <div id="myNav" class="overlay">
+              <div class="overlay-content">
+                <a href="">Home</a>
+                <a href="#as">About</a>
+                <a href="#cs">Predict Theyyam</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </nav>
+    </div>
+  </header>
+  <!-- end header section -->
+
+  <!-- slider section -->
+  <section class="slider_section position-relative">
+    <div class="slider_bg_box">
+      <img src="{% static 'myapp/assets/images/slider-bg.jpg' %}" alt="">
+    </div>
+    <div class="slider_bg"></div>
+    <div class="container">
+      <div class="col-md-9 col-lg-8">
+        <div class="detail-box">
+          <h1>
+            Theyyam
+            <br> Digitalization
+          </h1>
+          <p>
+            A Platform To Identify Theyyam Characters
+          </p>
+          <div>
+            <a href="#cs" class="slider-link">
+              Get Started
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end slider section -->
+
+
+  <!-- about section -->
+
+  <section id="as" class="about_section  pt-5 ">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="img-box">
+            <img src="{% static 'myapp/assets/images/about-img.jpg' %}" alt="">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2 class="p-2">
+
+              </h2>
+            </div>
+            <p class="p-2" >
+              "Theyyam is not merely a performance; it embodies Kerala's cultural essence, bridging the earthly and the divine. Through elaborate rituals and vibrant costumes, it channels the energy of gods and ancestral spirits to bless and protect communities. Theyyam fosters unity, identity, and reverence among its spectators, preserving ancient traditions while showcasing Kerala's cultural richness. It stands as a testament to art's power in connecting humanity with the divine, offering solace and inspiration."
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end about section -->
+
+
+
+
+  <!-- client section -->
+
+  <section id="cs" class="client_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Predict Theyyam
+        </h2>
+      </div>
+      <div id="carouselExample2Controls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row">
+              <div class="col-md-11 col-lg-10 mx-auto">
+                <div class="box">
+
+                  <h2>Upload Video</h2> <br>
+                  <form method="post" enctype="multipart/form-data" action="{% url 'upload_video' %}">
+                   {% csrf_token %}
+                   <input type="file" name="video" accept="video/*">
+                   <button class="btn btn-outline-info" type="submit">Upload</button> <br>
+                  </form>
+
+                   {% if output_file_url %}
+<!--                  <h2>Predictions:</h2>-->
+                  <p><br>Character Successfully Predicted. Your File Is Ready To Download !!</p><br>
+                  <form method="post" action="{% url 'download_video' %}">
+                   {% csrf_token %}
+
+                   <button class="btn btn-outline-info" type="submit">Download</button>
+                  </form>
+                   {% endif %}
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- end client section -->
+
+
+
+  <!-- footer section -->
+  <footer class="footer_section">
+    <div class="container">
+      <p>
+        &copy; <span id="displayYear"></span> All Rights Reserved By DIGITheyyam
+      </p>
+    </div>
+  </footer>
+  <!-- footer section -->
+
+  <!-- jQuery -->
+  <script src="{% static 'myapp/assets/js/jquery-3.4.1.min.js' %}"></script>
+  <!-- bootstrap js -->
+  <script src="{% static 'myapp/assets/js/bootstrap.js' %}"></script>
+  <!-- custom js -->
+  <script src="{% static 'myapp/assets/js/custom.js' %}"></script>
+
+
+</body>
+
+
+</html>
